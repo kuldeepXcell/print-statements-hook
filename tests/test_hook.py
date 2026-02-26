@@ -3,17 +3,18 @@ from print_statement_hook.hook import check_file_for_prints, is_excluded, get_al
 def test_detects_print(tmp_path):
     p = tmp_path / "has_print.py"
     p.write_text("print('hello')")
-    assert check_file_for_prints(str(p)) is True
+    assert len(check_file_for_prints(str(p))) > 0
 
 def test_detects_multiple_prints(tmp_path):
     p = tmp_path / "multiple_prints.py"
     p.write_text("print('one')\nprint('two')")
-    assert check_file_for_prints(str(p)) is True
+    findings = check_file_for_prints(str(p))
+    assert len(findings) == 2
 
 def test_no_print(tmp_path):
     p = tmp_path / "no_print.py"
     p.write_text("x = 1 + 1\n# print('commented')")
-    assert check_file_for_prints(str(p)) is False
+    assert len(check_file_for_prints(str(p))) == 0
 
 def test_is_excluded(tmp_path):
     f = tmp_path / "test.py"
