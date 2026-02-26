@@ -1,0 +1,6 @@
+- id: check-print-statements
+  name: Check for print statements
+  description: This hook checks for the presence of print() statements in Python files.
+  entry: check-print-statements
+  language: python
+  types: [python]
