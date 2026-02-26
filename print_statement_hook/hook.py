@@ -95,7 +95,7 @@ def check_print_statements():
             files_with_prints += 1
             total_findings += len(findings)
             for lineno, col in findings:
-                # Format: file:line:col: Issue
+                # Format: file:line: Issue
                 print(
                     f"{COLOR_RED}FAIL{COLOR_RESET} {file_path}:{lineno}: {COLOR_BOLD}print{COLOR_RESET} statement found.")
 
