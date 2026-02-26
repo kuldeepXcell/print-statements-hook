@@ -97,7 +97,8 @@ def check_print_statements():
             for lineno, col in findings:
                 # Format: file:line: Issue
                 print(
-                    f"{COLOR_RED}FAIL{COLOR_RESET} {file_path}:{lineno}: {COLOR_BOLD}print{COLOR_RESET} statement found.")
+                    f"{COLOR_RED}FAIL{COLOR_RESET} {file_path}:{lineno}: {COLOR_BOLD}print{COLOR_RESET} statement found."
+                )
 
     if total_findings > 0:
         sys.exit(1)
