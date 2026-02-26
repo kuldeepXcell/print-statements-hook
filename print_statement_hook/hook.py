@@ -89,8 +89,6 @@ def check_print_statements():
     total_findings = 0
     files_with_prints = 0
 
-    print(f"{COLOR_BOLD}Checking for forbidden print statements...{COLOR_RESET}\n")
-
     for file_path in files_to_check:
         findings = check_file_for_prints(file_path)
         if findings:
@@ -99,14 +97,13 @@ def check_print_statements():
             for lineno, col in findings:
                 # Format: file:line:col: Issue
                 print(
-                    f"{COLOR_RED}FAIL{COLOR_RESET} {file_path}:{lineno}:{col}: Forbidden {COLOR_BOLD}print(){COLOR_RESET} found.")
+                    f"{COLOR_RED}FAIL{COLOR_RESET} {file_path}:{lineno}: {COLOR_BOLD}print(){COLOR_RESET} statement found.")
 
     if total_findings > 0:
         print(
             f"\n{COLOR_RED}{COLOR_BOLD}FAILED{COLOR_RESET}: Found {total_findings} print statements across {files_with_prints} files.")
         sys.exit(1)
     else:
-        print(f"{COLOR_GREEN}SUCCESS: No forbidden print statements found in {len(files_to_check)} files.{COLOR_RESET}")
         sys.exit(0)
 
 
