@@ -97,13 +97,15 @@ def check_print_statements():
             for lineno, col in findings:
                 # Format: file:line:col: Issue
                 print(
-                    f"{COLOR_RED}FAIL{COLOR_RESET} {file_path}:{lineno}: {COLOR_BOLD}print(){COLOR_RESET} statement found.")
+                    f"{COLOR_RED}FAIL{COLOR_RESET} {file_path}:{lineno}: {COLOR_BOLD}print{COLOR_RESET} statement found.")
 
+    # Print final summary
     if total_findings > 0:
-        print(
-            f"\n{COLOR_RED}{COLOR_BOLD}FAILED{COLOR_RESET}: Found {total_findings} print statements across {files_with_prints} files.")
+        print(f"\n{COLOR_RED}{COLOR_BOLD}FAILED{COLOR_RESET}: Found {total_findings} print statements across {files_with_prints} files.")
         sys.exit(1)
     else:
+        # User requested a summary at the end
+        print(f"{COLOR_GREEN}SUCCESS{COLOR_RESET}: Found 0 print statements across {len(files_to_check)} files.")
         sys.exit(0)
 
 
